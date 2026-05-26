@@ -1,0 +1,1822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tamanna Sangeet Vidyalaya</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#9d1d1d;
+      --primary-light:#d43636;
+      --secondary:#f5ead7;
+      --gold:#d7aa57;
+      --gold-soft:#f4d99a;
+      --dark:#080808;
+      --dark-2:#101011;
+      --dark-light:#171718;
+      --border:rgba(255,255,255,.10);
+      --muted:#b9b3a8;
+    }
+
+    *{box-sizing:border-box;}
+
+    html{scroll-behavior:smooth;}
+
+    body{
+      background:
+        radial-gradient(circle at 12% 8%, rgba(157,29,29,.22), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(215,170,87,.08), transparent 26%),
+        linear-gradient(180deg,#070707,#101010 38%,#080808);
+      color:#fff;
+      font-family:'Inter',sans-serif;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:72px 72px;
+      mask-image:linear-gradient(180deg, #000, transparent 88%);
+      z-index:-1;
+    }
+
+    h1,h2,h3,h4,h5{
+      font-family:'Cormorant Garamond',serif;
+      font-weight:700;
+      letter-spacing:-.02em;
+      color:#efe2cf;
+    }
+
+    a{text-decoration:none;}
+
+    .container{position:relative;}
+
+    .navbar{
+      background:rgba(8,8,8,.58);
+      backdrop-filter:blur(22px);
+      border-bottom:1px solid rgba(215,170,87,.12);
+      box-shadow:0 18px 50px rgba(0,0,0,.28);
+    }
+
+    .navbar::before{
+      content:'';
+      position:absolute;
+      inset:auto 0 0 0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(215,170,87,.45), transparent);
+      opacity:.7;
+    }
+
+    .navbar-brand img{
+      width:64px;
+      height:64px;
+      object-fit:contain;
+      border-radius:50%;
+      background:#141414;
+      padding:4px;
+      border:1px solid rgba(215,170,87,.38);
+      box-shadow:
+        0 0 0 6px rgba(215,170,87,.05),
+        0 10px 30px rgba(0,0,0,.35);
+    }
+
+    
+
+    .nav-link{
+      color:#d8cec0 !important;
+      font-size:12px;
+      margin:0 4px;
+      opacity:.92;
+      font-weight:700;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      position:relative;
+      padding:10px 13px!important;
+      border-radius:999px;
+      transition:.3s ease;
+    }
+
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:6px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+      transform:scaleX(0);
+      transition:.3s ease;
+    }
+
+    .nav-link:hover{
+      opacity:1;
+      color:var(--gold-soft)!important;
+      background:rgba(255,255,255,.045);
+    }
+
+    .nav-link:hover::after{transform:scaleX(1);}
+
+    .btn-primary-custom{
+      background:linear-gradient(135deg,#7f1515 0%, var(--primary) 45%, var(--primary-light) 100%);
+      color:#fff;
+      border:1px solid rgba(245,234,215,.12);
+      padding:14px 34px;
+      border-radius:999px;
+      box-shadow:
+        0 14px 36px rgba(157,29,29,.30),
+        inset 0 1px 0 rgba(255,255,255,.18);
+      transition:.35s ease;
+      font-weight:700;
+      font-size:13px;
+      line-height:1;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+
+    .btn-primary-custom::before{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.34) 42%, transparent 70%);
+      transform:translateX(-120%) skewX(-18deg);
+      transition:.75s ease;
+      z-index:-1;
+    }
+
+    .btn-primary-custom::after{
+      content:'';
+      position:absolute;
+      inset:2px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      pointer-events:none;
+    }
+
+    .btn-primary-custom:hover{
+      color:#f7eee3;
+      transform:translateY(-3px);
+      box-shadow:
+        0 22px 58px rgba(157,29,29,.42),
+        0 0 0 7px rgba(215,170,87,.10),
+        inset 0 1px 0 rgba(255,255,255,.22);
+    }
+
+    .btn-primary-custom:hover::before{
+      transform:translateX(120%) skewX(-18deg);
+    }
+
+    .btn-primary-custom.btn-premium-pulse{
+      animation:premiumPulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes premiumPulse{
+      0%,100%{box-shadow:0 14px 36px rgba(157,29,29,.30), inset 0 1px 0 rgba(255,255,255,.18);}
+      50%{box-shadow:0 20px 52px rgba(157,29,29,.48), 0 0 0 8px rgba(157,29,29,.08), inset 0 1px 0 rgba(255,255,255,.22);}
+    }
+
+    .btn-outline-custom{
+      border:1px solid rgba(245,234,215,.28);
+      color:#f8ead5;
+      padding:14px 34px;
+      border-radius:999px;
+      transition:.35s ease;
+      background:rgba(255,255,255,.035);
+      backdrop-filter:blur(10px);
+      font-size:13px;
+      line-height:1;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+
+    .btn-outline-custom:hover{
+      background:rgba(255,255,255,.08);
+      color:#e7d6c0;
+      border-color:rgba(245,234,215,.26);
+      transform:translateY(-3px);
+      box-shadow:0 18px 42px rgba(245,234,215,.15);
+    }
+
+    .hero-section{
+      min-height:100vh;
+      position:relative;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      padding:150px 0 96px;
+      background:
+        linear-gradient(90deg, rgba(5,5,5,.92) 0%, rgba(5,5,5,.70) 44%, rgba(5,5,5,.28) 100%),
+        linear-gradient(180deg, rgba(157,29,29,.12), rgba(0,0,0,.22)),
+        url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2200&auto=format&fit=crop') center center/cover no-repeat;
+    }
+
+    .hero-section::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 78% 28%, rgba(215,170,87,.18), transparent 28%),
+        radial-gradient(circle at 22% 60%, rgba(157,29,29,.28), transparent 34%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .hero-section::after{
+      content:'';
+      position:absolute;
+      inset:auto 0 0 0;
+      height:220px;
+      background:linear-gradient(180deg, transparent, #080808 92%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .hero-content-wrap{
+      max-width:900px;
+      padding:46px 0;
+    }
+
+    .music-note{
+      position:absolute;
+      color:rgba(245,234,215,.16);
+      font-size:46px;
+      animation:floatNote 7s ease-in-out infinite;
+      z-index:1;
+    }
+
+    .note-1{top:24%;left:7%;}
+    .note-2{bottom:18%;right:12%;animation-delay:1.3s;}
+    .note-3{top:34%;right:34%;animation-delay:2.4s;}
+
+    @keyframes floatNote{
+      0%,100%{transform:translateY(0) rotate(0deg);}
+      50%{transform:translateY(-24px) rotate(8deg);}
+    }
+
+    .eyebrow{
+      color:var(--gold-soft);
+      text-transform:uppercase;
+      letter-spacing:2.8px;
+      font-size:12px;
+      font-weight:800;
+      margin-bottom:18px;
+      display:inline-flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .eyebrow::before{
+      content:'';
+      width:42px;
+      height:1px;
+      background:linear-gradient(90deg,var(--gold),transparent);
+      display:inline-block;
+    }
+
+    .hero-title{
+      font-size:96px;
+      line-height:.90;
+      margin-bottom:28px;
+      max-width:940px;
+      text-shadow:0 24px 60px rgba(0,0,0,.42);
+    }
+
+    .hero-title span{
+      color:#e8d4b2;
+      position:relative;
+    }
+
+    .hero-subtitle{
+      font-size:20px;
+      color:#cdc2b5;
+      max-width:720px;
+      line-height:1.9;
+      opacity:.92;
+    }
+
+    .hero-stats{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:38px;
+    }
+
+    .stat-pill{
+      border:1px solid rgba(215,170,87,.22);
+      background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));
+      backdrop-filter:blur(14px);
+      border-radius:20px;
+      padding:17px 20px;
+      min-width:148px;
+      box-shadow:0 22px 52px rgba(0,0,0,.20);
+    }
+
+    .stat-pill strong{display:block;color:var(--secondary);font-size:24px;line-height:1;}
+    .stat-pill span{font-size:13px;color:#d0c7bb;}
+
+    .lead-form{
+      background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.045));
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(18px);
+      border-radius:30px;
+      padding:34px;
+      box-shadow:0 30px 90px rgba(0,0,0,.36);
+    }
+
+    .form-control,.form-select{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,255,255,.10);
+      color:#fff;
+      height:54px;
+      border-radius:16px;
+    }
+
+    .form-control:focus,.form-select:focus{
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      border-color:rgba(215,170,87,.45);
+      box-shadow:0 0 0 .25rem rgba(215,170,87,.10);
+    }
+
+    .form-control::placeholder{color:#d2ccc2;}
+    .form-select option{color:#111;}
+
+    .form-error{
+      display:none;
+      color:#ffd2d2;
+      font-size:12px;
+      margin-top:7px;
+    }
+
+    .form-control.is-invalid{
+      border-color:rgba(255,110,110,.72);
+      box-shadow:0 0 0 .2rem rgba(255,80,80,.10);
+    }
+
+    .form-control.is-invalid + .form-error{
+      display:block;
+    }
+
+    .thank-you-message{
+      display:none;
+      background:linear-gradient(180deg, rgba(215,170,87,.14), rgba(255,255,255,.04));
+      border:1px solid rgba(215,170,87,.28);
+      color:#f8ead5;
+      border-radius:20px;
+      padding:22px;
+      text-align:center;
+      margin-top:18px;
+    }
+
+    .thank-you-message i{
+      color:var(--gold-soft);
+      font-size:30px;
+      display:block;
+      margin-bottom:10px;
+    }
+
+    .thank-you-message h5{
+      margin-bottom:6px;
+      font-size:26px;
+    }
+
+    .thank-you-message p{
+      margin:0;
+      color:#d8cec0;
+      font-size:14px;
+    }
+
+    .enquiry-modal .modal-content{
+      background:linear-gradient(180deg, rgba(18,18,19,.98), rgba(8,8,8,.98));
+      border:1px solid rgba(215,170,87,.18);
+      border-radius:30px;
+      box-shadow:0 34px 100px rgba(0,0,0,.55);
+      color:#fff;
+      overflow:hidden;
+    }
+
+    .enquiry-modal .modal-header{
+      border-bottom:1px solid rgba(255,255,255,.08);
+      padding:24px 28px;
+    }
+
+    .enquiry-modal .modal-body{padding:28px;}
+
+    .enquiry-modal .modal-title{
+      color:#efe2cf;
+      font-size:34px;
+      line-height:1;
+    }
+
+    .enquiry-modal .btn-close{filter:invert(1);opacity:.8;}
+
+    .section-padding{
+      padding:112px 0;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .section-padding::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.8;
+      z-index:0;
+    }
+
+    .section-padding > .container{
+      position:relative;
+      z-index:2;
+    }
+
+    .music-wave-bg::before{
+      background:
+        radial-gradient(circle at 20% 20%, rgba(157,29,29,.18), transparent 28%),
+        radial-gradient(circle at 80% 40%, rgba(215,170,87,.10), transparent 24%),
+        url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+    }
+
+    .vinyl-bg::before{
+      background:
+        radial-gradient(circle at center, rgba(215,170,87,.05) 0 8%, transparent 8% 12%, rgba(255,255,255,.03) 12% 13%, transparent 13% 18%, rgba(255,255,255,.02) 18% 19%, transparent 19%),
+        radial-gradient(circle at 80% 20%, rgba(157,29,29,.16), transparent 24%);
+      background-size:700px 700px, auto;
+      background-position:center right, center;
+      opacity:.55;
+    }
+
+    .stage-light-bg::before{
+      background:
+        linear-gradient(135deg, rgba(157,29,29,.10), transparent 40%),
+        radial-gradient(circle at top center, rgba(215,170,87,.12), transparent 35%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.015) 0 2px, transparent 2px 120px);
+    }
+
+    .music-lines-bg::before{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), transparent),
+        repeating-linear-gradient(180deg, rgba(255,255,255,.03) 0 1px, transparent 1px 48px),
+        radial-gradient(circle at 85% 10%, rgba(157,29,29,.16), transparent 26%);
+    }
+
+    .parallax-band{
+      min-height:420px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background-attachment:fixed;
+      background-size:cover;
+      background-position:center;
+      isolation:isolate;
+    }
+
+    .parallax-band::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.88), rgba(0,0,0,.50), rgba(0,0,0,.76)),
+        radial-gradient(circle at 20% 30%, rgba(157,29,29,.22), transparent 30%),
+        radial-gradient(circle at 75% 60%, rgba(215,170,87,.14), transparent 26%);
+      z-index:-1;
+    }
+
+    .parallax-band::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        repeating-linear-gradient(180deg, rgba(255,255,255,.05) 0 1px, transparent 1px 46px);
+      opacity:.35;
+      z-index:-1;
+    }
+
+    .parallax-music{
+      background-image:url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=2200&auto=format&fit=crop');
+    }
+
+    .parallax-dance{
+      background-image:url('https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=2200&auto=format&fit=crop');
+    }
+
+    .parallax-content{
+      max-width:760px;
+      padding:80px 0;
+    }
+
+    .parallax-title{
+      font-size:62px;
+      line-height:1;
+      margin-bottom:18px;
+    }
+
+    .parallax-text{
+      color:#cfc3b4;
+      font-size:18px;
+      line-height:1.8;
+      margin-bottom:0;
+    }
+
+    .section-title{
+      font-size:64px;
+      line-height:.98;
+      margin-bottom:20px;
+    }
+
+    .section-subtitle{
+      color:#b7aea2;
+      max-width:760px;
+      margin:auto;
+      line-height:1.85;
+      font-size:17px;
+    }
+
+    .luxury-panel{
+      border:1px solid rgba(215,170,87,.16);
+      background:
+        linear-gradient(180deg, rgba(12,12,13,.96), rgba(18,18,19,.92)),
+        radial-gradient(circle at top right, rgba(157,29,29,.18), transparent 28%);
+      border-radius:34px;
+      box-shadow:0 30px 90px rgba(0,0,0,.38);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .luxury-panel::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size:44px 44px;
+      opacity:.25;
+      pointer-events:none;
+    }
+
+    .luxury-panel .row{
+      position:relative;
+      z-index:2;
+    }
+
+    .course-card{
+      background:linear-gradient(180deg,#1b1a1a,#0f0f10);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:32px;
+      overflow:hidden;
+      transition:.45s;
+      height:100%;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 28px 70px rgba(0,0,0,.24);
+    }
+
+    .course-card::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,.40));
+      pointer-events:none;
+    }
+
+    .course-card:hover{transform:translateY(-12px);border-color:rgba(215,170,87,.46);}
+    .course-media{
+      position:relative;
+      overflow:hidden;
+    }
+
+    .course-card img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      transition:.6s;
+      filter:saturate(.92) contrast(1.05);
+    }
+    .course-card:hover img{transform:scale(1.07);}
+
+    .course-content{
+      padding:30px 28px;
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      min-height:210px;
+      flex:1;
+    }
+
+    .course-content h4{
+      font-size:38px;
+      margin-bottom:14px;
+      padding-top:0;
+      line-height:.95;
+    }
+    .course-content p{
+      color:#bfb5a7;
+      line-height:1.72;
+      min-height:82px;
+      margin-bottom:22px;
+    }
+
+    .course-link{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      width:max-content;
+      margin-top:auto;
+      align-self:flex-start;
+      padding:9px 16px;
+      border-radius:999px;
+      border:1px solid rgba(245,234,215,.12);
+      background:rgba(255,255,255,.025);
+      backdrop-filter:blur(12px);
+      color:#d7aa57;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.05em;
+      transition:.3s ease;
+    }
+
+    .course-link:hover{
+      color:#e6d4bc;
+      background:rgba(255,255,255,.06);
+      border-color:rgba(245,234,215,.20);
+      transform:translateY(-2px);
+      box-shadow:0 14px 34px rgba(245,234,215,.13);
+    }
+
+    .course-link i{
+      font-size:13px;
+      transition:.3s ease;
+    }
+
+    .course-link:hover i{
+      transform:translateX(3px);
+      color:#e6d4bc;
+    }
+
+    .course-tags{
+      display:flex;
+      gap:8px;
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      z-index:3;
+      flex-wrap:wrap;
+      max-width:82%;
+    }
+
+    .course-tags span{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(8,8,8,.72);
+      backdrop-filter:blur(10px);
+      padding:6px 11px;
+      border-radius:999px;
+      font-size:10px;
+      color:#f4dfbe;
+      letter-spacing:.01em;
+      text-transform:none;
+      font-weight:600;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .about-image{
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      width:48vw;
+      overflow:hidden;
+    }
+    .about-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:saturate(.90) contrast(1.05);
+    }
+
+    .feature-box{
+      background:linear-gradient(180deg,#1a1a1b,#111112);
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.10);
+      padding:30px;
+      height:100%;
+      transition:.35s;
+    }
+
+    .feature-box:hover{border-color:rgba(215,170,87,.42);transform:translateY(-5px);box-shadow:0 24px 54px rgba(0,0,0,.22);}
+    .feature-box i{font-size:36px;color:var(--gold-soft);margin-bottom:20px;display:block;}
+    .feature-box p{color:#b8afa4;font-size:14px;margin:0;}
+
+    .journey-step{
+      background:linear-gradient(180deg,#191818,#101010);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;
+      padding:30px;
+      height:100%;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .journey-step::after{content:'';position:absolute;right:-24px;top:-24px;width:90px;height:90px;border-radius:50%;background:rgba(157,29,29,.16);filter:blur(4px);}
+    .step-no{width:48px;height:48px;background:rgba(157,29,29,.22);color:var(--secondary);border:1px solid rgba(215,170,87,.28);display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:800;margin-bottom:20px;}
+
+    .gallery-img{border-radius:28px;overflow:hidden;height:360px;border:1px solid rgba(255,255,255,.10);box-shadow:0 26px 70px rgba(0,0,0,.22);}
+    .gallery-img.tall{height:360px;}
+    .gallery-img img{width:100%;height:100%;object-fit:cover;transition:.65s;filter:saturate(.88) contrast(1.08);}
+    .gallery-img:hover img{transform:scale(1.07);}
+
+    .testimonial-box{
+      background:linear-gradient(180deg,#1a1919,#101010);
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.10);
+      padding:46px 40px;
+      height:100%;
+      box-shadow:0 26px 70px rgba(0,0,0,.18);
+    }
+
+    .testimonial-box i{color:var(--gold-soft);font-size:32px;}
+
+    .cta-section{
+      background:
+      linear-gradient(90deg, rgba(0,0,0,.86), rgba(0,0,0,.58)),
+      url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=1800&auto=format&fit=crop') center/cover;
+      border-radius:42px;
+      overflow:hidden;
+      padding:86px;
+      border:1px solid rgba(215,170,87,.18);
+      box-shadow:0 34px 100px rgba(0,0,0,.30);
+    }
+
+    .accordion-item{background:#141414;border:1px solid rgba(255,255,255,.10);color:#fff;border-radius:20px!important;overflow:hidden;margin-bottom:14px;}
+    .accordion-button{background:#141414;color:#fff;box-shadow:none!important;font-weight:700;padding:20px 24px;}
+    .accordion-button:not(.collapsed){background:#211818;color:#fff;}
+    .accordion-button::after{filter:invert(1);}
+    .accordion-body{color:#cfc6bb;padding:0 24px 22px;}
+
+    footer{border-top:1px solid rgba(255,255,255,.08);padding:76px 0 30px;background:#060606;}
+    .footer-links a{color:#c9c0b4;display:block;margin-bottom:12px;}
+    .footer-links a:hover{color:#fff;}
+
+    .floating-cta{
+      position:fixed;
+      bottom:22px;
+      right:22px;
+      z-index:99;
+    }
+
+    .floating-cta a{
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-top:12px;
+      font-size:22px;
+      color:#d7aa57;
+      background:rgba(10,10,10,.72);
+      border:1px solid rgba(215,170,87,.42);
+      backdrop-filter:blur(14px);
+      box-shadow:
+        0 16px 38px rgba(0,0,0,.34),
+        0 0 0 5px rgba(215,170,87,.08),
+        inset 0 1px 0 rgba(255,255,255,.08);
+      transition:.3s ease;
+    }
+
+    .floating-cta a:hover{
+      color:#f4d99a;
+      background:linear-gradient(135deg, rgba(80,12,12,.92), rgba(157,29,29,.78));
+      border-color:rgba(215,170,87,.62);
+      transform:translateY(-3px);
+      box-shadow:
+        0 20px 48px rgba(215,170,87,.16),
+        0 0 0 7px rgba(157,29,29,.10),
+        inset 0 1px 0 rgba(255,255,255,.14);
+    }
+
+    .whatsapp-btn,
+    .call-btn{
+      background:rgba(10,10,10,.72);
+    }
+
+    .floating-cta a i{
+      color:#d7aa57;
+      transition:.3s ease;
+      text-shadow:0 0 14px rgba(215,170,87,.18);
+    }
+
+    .floating-cta a:hover i{
+      transform:scale(1.06);
+      text-shadow:0 0 18px rgba(215,170,87,.32);
+    }
+    .offcanvas{background:#101011!important;}
+
+    .mobile-scroll-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0;
+    }
+
+    .mobile-scroll-row > *{
+      flex-shrink:0;
+    }
+
+    .course-badge-marquee{
+      max-width:920px;
+      margin:28px auto 0;
+      overflow:hidden;
+      position:relative;
+      mask-image:linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    }
+
+    .course-badge-track{
+      display:flex;
+      width:max-content;
+      gap:10px;
+      animation:courseMarquee 26s linear infinite;
+    }
+
+    .course-badge-marquee:hover .course-badge-track{
+      animation-play-state:paused;
+    }
+
+    .course-badge-track span{
+      border:1px solid rgba(215,170,87,.22);
+      background:linear-gradient(180deg, rgba(215,170,87,.13), rgba(255,255,255,.035));
+      color:#ead9bd;
+      padding:8px 15px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+      white-space:nowrap;
+      box-shadow:0 12px 28px rgba(0,0,0,.18);
+    }
+
+    @keyframes courseMarquee{
+      from{transform:translateX(0);}
+      to{transform:translateX(-50%);}
+    }
+
+    .mobile-compact-only{display:none;}
+
+    .class-slider-wrap{
+      overflow:hidden;
+      position:relative;
+    }
+
+    .class-slider{
+      display:flex;
+      gap:24px;
+      overflow-x:auto;
+      scroll-behavior:smooth;
+      scroll-snap-type:x mandatory;
+      padding-bottom:12px;
+      scrollbar-color:#3b2a23 #111;
+      scrollbar-width:thin;
+    }
+
+    .class-slider::-webkit-scrollbar{height:7px;}
+    .class-slider::-webkit-scrollbar-track{background:#111;border-radius:20px;}
+    .class-slider::-webkit-scrollbar-thumb{background:#3b2a23;border-radius:20px;}
+    .class-slider::-webkit-scrollbar-thumb:hover{background:#6e3a2e;}
+
+    .class-card{
+      flex:0 0 calc(25% - 18px);
+      position:relative;
+      scroll-snap-align:start;
+      background:linear-gradient(180deg,#1b1a1a,#0f0f10);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:0 24px 60px rgba(0,0,0,.22);
+      transition:.35s ease;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .class-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(215,170,87,.34);
+    }
+
+    .class-card img{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      filter:saturate(.92) contrast(1.04);
+      transition:.45s ease;
+    }
+
+    .class-card:hover img{transform:scale(1.05);}
+
+    .class-card > div{
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      flex:1;
+    }
+
+    .class-card span{
+      display:inline-flex;
+      width:max-content;
+      color:#f4d99a;
+      border:1px solid rgba(215,170,87,.20);
+      background:rgba(8,8,8,.66);
+      backdrop-filter:blur(10px);
+      padding:5px 10px;
+      border-radius:999px;
+      font-size:10px;
+      font-weight:700;
+      position:absolute;
+      top:14px;
+      left:14px;
+      z-index:4;
+      box-shadow:0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .class-card h4{
+      font-size:28px;
+      line-height:1;
+      margin-bottom:10px;
+    }
+
+    .class-card p{
+      color:#bfb5a7;
+      font-size:13px;
+      line-height:1.55;
+      margin-bottom:18px;
+      min-height:62px;
+    }
+
+    .class-card a{
+      margin-top:auto;
+      color:#f7ead6;
+      font-size:11px;
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      width:max-content;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid rgba(215,170,87,.18);
+      background:linear-gradient(180deg, rgba(157,29,29,.32), rgba(255,255,255,.04));
+      backdrop-filter:blur(10px);
+      box-shadow:0 12px 28px rgba(0,0,0,.18);
+      transition:.3s ease;
+    }
+
+    .class-card a:hover{
+      color:#fff2db;
+      background:linear-gradient(180deg, rgba(157,29,29,.52), rgba(255,255,255,.06));
+      border-color:rgba(215,170,87,.34);
+      transform:translateY(-2px);
+      box-shadow:0 18px 34px rgba(157,29,29,.22);
+    }
+
+    @media(max-width:991px){
+      .about-image{
+        position:relative;
+        width:100%;
+        height:420px;
+        margin-bottom:28px;
+      }
+
+      .parallax-band{
+        background-attachment:scroll;
+        min-height:360px;
+      }
+
+      .parallax-title{font-size:44px;}
+
+      .hero-section{padding:130px 0 76px;}
+      .hero-title{font-size:64px;}
+      .section-title{font-size:46px;}
+      .about-image{min-height:430px;}
+      .cta-section{padding:54px 30px;}
+      .gallery-img.tall{height:330px;}
+    }
+
+    @media(max-width:576px){
+      .navbar{padding-top:10px!important;padding-bottom:10px!important;}
+      .navbar-brand img{width:46px;height:46px;}
+      .brand-title .fw-bold{font-size:18px;}
+      .brand-title small{font-size:11px;}
+
+      .hero-section{
+        min-height:78vh;
+        padding:105px 0 48px;
+        background-position:center right;
+      }
+
+      .hero-content-wrap{padding:18px 0;}
+      .hero-title{font-size:42px;line-height:.96;margin-bottom:16px;max-width:360px;}
+      .hero-subtitle{font-size:14px;line-height:1.65;max-width:340px;}
+      .eyebrow{font-size:10px;letter-spacing:1.8px;margin-bottom:12px;gap:8px;}
+      .eyebrow::before{width:28px;}
+      .btn-primary-custom,.btn-outline-custom{
+        padding:11px 22px;
+        font-size:11px;
+        letter-spacing:.06em;
+      }
+
+      .hero-stats{
+        gap:8px;
+        margin-top:22px;
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+      }
+
+      .mobile-scroll-row{
+        scrollbar-color:#3b2a23 #111;
+        scrollbar-width:thin;
+      }
+
+      .mobile-scroll-row::-webkit-scrollbar{height:7px;}
+      .mobile-scroll-row::-webkit-scrollbar-track{background:#111;border-radius:20px;}
+      .mobile-scroll-row::-webkit-scrollbar-thumb{background:#3b2a23;border-radius:20px;}
+      .mobile-scroll-row::-webkit-scrollbar-thumb:hover{background:#6e3a2e;}
+
+      .stat-pill{
+        min-width:0;
+        padding:12px 13px;
+        border-radius:16px;
+      }
+      .stat-pill strong{font-size:18px;}
+      .stat-pill span{font-size:11px;}
+
+      .section-padding{padding:54px 0;}
+      .section-title{font-size:32px;line-height:1.04;margin-bottom:12px;}
+      .section-subtitle{font-size:14px;line-height:1.6;}
+      .text-center.mb-5{margin-bottom:1.6rem!important;}
+      .mobile-compact-only{display:flex;}
+
+      .luxury-panel{border-radius:24px;}
+      .luxury-panel.p-4,.luxury-panel.p-lg-5{padding:22px!important;}
+      .luxury-panel .section-title{font-size:28px;}
+      .luxury-panel p{font-size:13px;line-height:1.55!important;}
+
+      .mobile-scroll-row{
+        flex-wrap:nowrap!important;
+        overflow-x:auto;
+        margin-left:-12px;
+        margin-right:-12px;
+        padding-left:12px;
+        padding-right:12px;
+        padding-bottom:8px;
+        scroll-snap-type:x mandatory;
+      }
+
+      .course-scroll-row > .col-md-6,
+      .course-scroll-row > .col-lg-3{width:82%;}
+
+      .class-slider{
+        gap:14px;
+      }
+
+      .class-card{
+        flex-basis:78%;
+        border-radius:22px;
+      }
+
+      .class-card img{
+        height:160px;
+      }
+
+      .class-card > div{
+        padding:18px;
+      }
+
+      .class-card h4{
+        font-size:24px;
+      }
+
+      .class-card p{
+        font-size:12px;
+        min-height:54px;
+      }
+
+      .course-card{border-radius:22px;scroll-snap-align:start;}
+      .course-card img{height:170px;}
+      .course-content{
+        padding:22px 18px;
+        min-height:178px;
+      }
+
+      .course-link{
+        padding:8px 13px;
+        font-size:10px;
+      }
+      .course-content h4{font-size:26px;margin-bottom:6px;}
+      .course-content p{font-size:13px;line-height:1.5;margin-bottom:0;}
+      .course-tags{
+        gap:6px;
+        left:14px;
+        bottom:14px;
+        max-width:82%;
+      }
+
+      .course-tags span{
+        font-size:10px;
+        padding:6px 10px;
+      }
+      .course-badge-marquee{
+        max-width:100%;
+        margin-top:18px;
+        mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      }
+
+      .course-badge-track{
+        gap:7px;
+        animation-duration:22s;
+      }
+
+      .course-badge-track span{
+        font-size:11px;
+        padding:7px 11px;
+      }
+
+      .parallax-band{min-height:230px;background-attachment:scroll;}
+      .parallax-content{padding:38px 0;max-width:330px;}
+      .parallax-title{font-size:30px;line-height:1.05;margin-bottom:10px;}
+      .parallax-text{font-size:13px;line-height:1.55;}
+
+      .about-image{
+        position:relative;
+        width:100%;
+        height:240px;
+        margin-bottom:18px;
+      }
+      #about .row.g-5{--bs-gutter-y:1.5rem;}
+      #about .row.g-4{
+        --bs-gutter-x:.5rem;
+        --bs-gutter-y:.5rem;
+      }
+
+      #about .row.g-4 > .col-md-6{
+        width:50%;
+      }
+
+      .feature-box{
+        padding:14px;
+        border-radius:18px;
+      }
+
+      .feature-box i{
+        font-size:22px;
+        margin-bottom:9px;
+      }
+
+      .feature-box h5{
+        font-size:17px;
+        margin-bottom:4px;
+        line-height:1;
+      }
+
+      .feature-box p{
+        font-size:11px;
+        line-height:1.35;
+      }
+
+      .journey-scroll-row > .col-md{width:58%;}
+      .journey-step{
+        padding:14px;
+        border-radius:18px;
+      }
+      .step-no{
+        width:30px;
+        height:30px;
+        font-size:11px;
+        margin-bottom:10px;
+      }
+      .journey-step h5{
+        font-size:17px;
+        margin-bottom:4px;
+        line-height:1;
+      }
+      .journey-step p{
+        font-size:11px;
+        line-height:1.35;
+        margin-bottom:0;
+      }
+
+      .gallery-scroll-row > .col-sm-6,
+      .gallery-scroll-row > .col-lg-3{
+        width:76%;
+      }
+
+      .gallery-img,
+      .gallery-img.tall{
+        height:250px;
+        border-radius:20px;
+        scroll-snap-align:start;
+      }
+
+      .testimonial-scroll-row > .col-md-4{width:82%;}
+      .testimonial-box{padding:22px;border-radius:22px;scroll-snap-align:start;}
+      .testimonial-box i{font-size:24px;}
+      .testimonial-box p{font-size:13px;line-height:1.55;}
+      .testimonial-box h6{font-size:13px;}
+
+      .cta-section{padding:28px 18px;border-radius:26px;}
+      .cta-section .row.g-5{--bs-gutter-y:1.5rem;}
+      .lead-form{padding:18px;border-radius:22px;}
+      .form-control,.form-select{height:44px;border-radius:12px;font-size:13px;}
+      textarea.form-control{min-height:90px;}
+
+      .accordion-button{padding:15px 16px;font-size:14px;}
+      .accordion-body{padding:0 16px 16px;font-size:13px;}
+      .accordion-item{border-radius:16px!important;margin-bottom:10px;}
+
+      footer{padding:45px 0 86px;}
+      footer .row.g-5{--bs-gutter-y:1.7rem;}
+      footer p, footer a{font-size:13px;}
+
+      .floating-cta{right:14px;bottom:14px;display:flex;gap:10px;}
+      .floating-cta a{width:48px;height:48px;margin-top:0;font-size:20px;}
+    }
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top py-3">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+      <img src="./logo.png" alt="Tamanna Sangeet Vidyalaya Logo">
+      
+    </a>
+
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-label="Open Menu">
+      <i class="bi bi-list text-white fs-2"></i>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item ms-lg-3"><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal" class="btn btn-primary-custom btn-premium-pulse"><i class="bi bi-play-circle me-2"></i>Book Demo Class</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="offcanvas offcanvas-end text-white" tabindex="-1" id="mobileMenu">
+  <div class="offcanvas-header border-bottom border-secondary-subtle">
+    <h5 class="mb-0">Menu</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+      <li class="nav-item mb-3"><a class="nav-link" href="#home">Home</a></li>
+      <li class="nav-item mb-3"><a class="nav-link" href="#about">About</a></li>
+      <li class="nav-item mb-3"><a class="nav-link" href="#courses">Courses</a></li>
+      <li class="nav-item mb-3"><a class="nav-link" href="#gallery">Gallery</a></li>
+      <li class="nav-item mb-3"><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+    <a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal" class="btn btn-primary-custom btn-premium-pulse w-100 mt-4"><i class="bi bi-headset me-2"></i>Book Free Demo</a>
+  </div>
+</div>
+
+<section class="hero-section" id="home">
+  <i class="bi bi-music-note-beamed music-note note-1"></i>
+  <i class="bi bi-vinyl music-note note-2"></i>
+  <i class="bi bi-music-note-list music-note note-3"></i>
+
+  <div class="container position-relative" style="z-index:2;">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-9" data-aos="fade-up">
+        <div class="hero-content-wrap">
+        <div class="eyebrow">Premium Music & Dance Institute</div>
+        <h1 class="hero-title">Where Rhythm Meets <span>Grace</span></h1>
+        <p class="hero-subtitle">Discover vocal music, instruments, dance and performance arts through beautifully structured classes, experienced mentors and an inspiring creative atmosphere.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal" class="btn btn-primary-custom btn-premium-pulse"><i class="bi bi-play-circle me-2"></i>Book Demo Class</a>
+          <a href="#courses" class="btn btn-outline-custom"><i class="bi bi-music-note-list me-2"></i>Explore Courses</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-pill"><strong>20+</strong><span>Music & Dance Classes</span></div>
+          <div class="stat-pill"><strong>All</strong><span>Age Group Batches</span></div>
+          <div class="stat-pill"><strong>Free</strong><span>Demo Class Available</span></div>
+          <div class="stat-pill"><strong>Stage</strong><span>Performance Training</span></div>
+        </div>
+        </div>
+      </div>
+
+      </div>
+  </div>
+</section>
+
+<section class="section-padding music-wave-bg" id="courses">
+  <div class="container mb-5">
+    <div class="luxury-panel p-4 p-lg-5" data-aos="fade-up">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <div class="eyebrow">Tamanna Sangeet Vidyalaya</div>
+          <h2 class="section-title mb-3">A refined space for music, movement and expression.</h2>
+        </div>
+        <div class="col-lg-5">
+          <p class="text-light" style="font-size:16px; line-height:1.9; color:#ddd6ca !important; opacity:.95;">Designed as a premium institute experience, Tamanna Sangeet Vidyalaya blends artistic learning, stage confidence and creative expression through beautifully curated music and dance programs for all age groups.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="eyebrow justify-content-center">Our Classes</div>
+      <h2 class="section-title">Explore Premium Training Programs</h2>
+      <p class="section-subtitle">Professional music, dance and fitness programs designed for beginners, advanced learners, kids, youth and adults.</p>
+      <div class="course-badge-marquee">
+        <div class="course-badge-track">
+          <span>Voice</span><span>Singing</span><span>Bollywood Singing</span><span>Choir</span><span>Guitar</span><span>Drums</span><span>Piano</span><span>Tabla</span><span>Salsa</span><span>Bachata</span><span>Bhangra</span><span>Zumba</span><span>Aerobics</span><span>Wedding Performances</span>
+          <span>Voice</span><span>Singing</span><span>Bollywood Singing</span><span>Choir</span><span>Guitar</span><span>Drums</span><span>Piano</span><span>Tabla</span><span>Salsa</span><span>Bachata</span><span>Bhangra</span><span>Zumba</span><span>Aerobics</span><span>Wedding Performances</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4 mobile-scroll-row course-scroll-row">
+      <div class="col-md-6 col-lg-4">
+        <div class="course-card" data-aos="fade-up">
+          <div class="course-media">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1200&auto=format&fit=crop" alt="Singing class">
+          <div class="course-tags"><span>Vocal</span><span>Guitar</span><span>Piano</span></div>
+          </div>
+          <div class="course-content">
+            <h4>Music Classes</h4>
+            <p>Voice, singing, Bollywood singing, choir, guitar, drums, piano, tabla and Indian classical vocals.</p>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal" class="course-link"><i class="bi bi-stars"></i> Enquire Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="course-media">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1200&auto=format&fit=crop" alt="Dance performance">
+          <div class="course-tags"><span>Bollywood</span><span>Salsa</span><span>Bhangra</span></div>
+          </div>
+          <div class="course-content">
+            <h4>Dance Classes</h4>
+            <p>Bollywood dance, salsa, bachata, bhangra, gidda, folk dance and ladies dance classes.</p>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal" class="course-link"><i class="bi bi-stars"></i> Enquire Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="course-media">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1200&auto=format&fit=crop" alt="Fitness dance class">
+          <div class="course-tags"><span>Zumba</span><span>Aerobics</span><span>Wedding</span></div>
+          </div>
+          <div class="course-content">
+            <h4>Fitness & Special</h4>
+            <p>Zumba, aerobics, fitness programs and wedding performance training for all age groups.</p>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal" class="course-link"><i class="bi bi-stars"></i> Enquire Now <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding stage-light-bg" id="all-classes">
+  <div class="container position-relative">
+    <div class="d-flex justify-content-between align-items-end mb-5 flex-wrap gap-3" data-aos="fade-up">
+      <div>
+        <div class="eyebrow">Complete Class List</div>
+        <h2 class="section-title mb-2">Choose Your Class</h2>
+        <p class="section-subtitle m-0" style="max-width:720px;">Browse individual music, dance, fitness and training classes. Select the class that matches your interest and book a demo.</p>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-outline-custom class-prev px-3 py-2" aria-label="Previous classes">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+        <button type="button" class="btn btn-outline-custom class-next px-3 py-2" aria-label="Next classes">
+          <i class="bi bi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="class-slider-wrap">
+      <div class="class-slider">
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=900&auto=format&fit=crop" alt="Voice Class">
+          <div><span>Music</span><h4>Voice</h4><p>Build vocal strength, clarity and confidence.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=900&auto=format&fit=crop" alt="Singing Class">
+          <div><span>Music</span><h4>Singing</h4><p>Learn melody, rhythm and expressive singing.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=900&auto=format&fit=crop" alt="Bollywood Singing">
+          <div><span>Music</span><h4>Bollywood Singing</h4><p>Practice popular songs with performance style.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=900&auto=format&fit=crop" alt="Choir Class">
+          <div><span>Music</span><h4>Choir</h4><p>Group singing with harmony and coordination.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=900&auto=format&fit=crop" alt="Indian Classical Vocal">
+          <div><span>Music</span><h4>Indian Classical Vocal</h4><p>Classical and semi-classical vocal foundation.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=900&auto=format&fit=crop" alt="Guitar Lessons">
+          <div><span>Music</span><h4>Guitar Lessons</h4><p>Learn chords, rhythm and song-based playing.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?q=80&w=900&auto=format&fit=crop" alt="Drum Lessons">
+          <div><span>Music</span><h4>Drum Lessons</h4><p>Develop beats, timing and energetic rhythm.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?q=80&w=900&auto=format&fit=crop" alt="Piano Class">
+          <div><span>Music</span><h4>Piano</h4><p>Learn notes, scales, chords and performance.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1485579149621-3123dd979885?q=80&w=900&auto=format&fit=crop" alt="Tabla Class">
+          <div><span>Music</span><h4>Tabla</h4><p>Indian rhythm training with traditional beats.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=900&auto=format&fit=crop" alt="Dance Class">
+          <div><span>Dance</span><h4>Dance</h4><p>Foundation movement, rhythm and expression.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=900&auto=format&fit=crop" alt="Bollywood Dance">
+          <div><span>Dance</span><h4>Bollywood Dance</h4><p>Energetic choreography for popular songs.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?q=80&w=900&auto=format&fit=crop" alt="Salsa Class">
+          <div><span>Dance</span><h4>Salsa</h4><p>Partner rhythm, footwork and graceful movement.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1504609813442-a8924e83f76e?q=80&w=900&auto=format&fit=crop" alt="Bachata Class">
+          <div><span>Dance</span><h4>Bachata</h4><p>Learn smooth styling and Latin rhythm.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1554188248-986adbb73be4?q=80&w=900&auto=format&fit=crop" alt="Bhangra Class">
+          <div><span>Dance</span><h4>Bhangra</h4><p>High-energy Punjabi dance and performance.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=900&auto=format&fit=crop" alt="Gidda Class">
+          <div><span>Dance</span><h4>Gidda</h4><p>Traditional folk steps with expressive styling.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=900&auto=format&fit=crop" alt="Haryanvi Folk Dance">
+          <div><span>Dance</span><h4>Haryanvi Folk Dance</h4><p>Regional folk movement and cultural rhythm.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=900&auto=format&fit=crop" alt="Rajasthani Folk Dance">
+          <div><span>Dance</span><h4>Rajasthani Folk Dance</h4><p>Graceful folk dance with traditional expression.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=900&auto=format&fit=crop" alt="Ladies Dance Classes">
+          <div><span>Dance</span><h4>Ladies Dance Classes</h4><p>Comfortable dance sessions for women learners.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=900&auto=format&fit=crop" alt="Wedding Performances">
+          <div><span>Dance</span><h4>Wedding Performances</h4><p>Choreography for weddings and family events.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=900&auto=format&fit=crop" alt="Aerobics Class">
+          <div><span>Fitness</span><h4>Aerobics</h4><p>Fun cardio movement for energy and fitness.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=900&auto=format&fit=crop" alt="Zumba Class">
+          <div><span>Fitness</span><h4>Zumba</h4><p>Dance fitness with rhythm and full-body energy.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?q=80&w=900&auto=format&fit=crop" alt="Fitness Training">
+          <div><span>Training</span><h4>Fitness Training</h4><p>Guided training for stamina and strength.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=900&auto=format&fit=crop" alt="Beginner Classes">
+          <div><span>Training</span><h4>Beginner’s Classes</h4><p>Easy-start classes for new learners.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=900&auto=format&fit=crop" alt="Advanced Classes">
+          <div><span>Training</span><h4>Advanced Classes</h4><p>Refined skill training for serious learners.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+        <div class="class-card">
+          <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=900&auto=format&fit=crop" alt="Youth Classes">
+          <div><span>Training</span><h4>Youth Classes</h4><p>Creative learning programs for young students.</p><a href="#" data-bs-toggle="modal" data-bs-target="#enquiryModal"><i class="bi bi-headset"></i> Enquire Now <i class="bi bi-arrow-right"></i></a></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="parallax-band parallax-music">
+  <div class="container">
+    <div class="parallax-content" data-aos="fade-up">
+      <div class="eyebrow">Feel The Sound</div>
+      <h2 class="parallax-title">Every note, every beat, every move tells a story.</h2>
+      <p class="parallax-text">A premium learning atmosphere where students develop confidence, rhythm and performance presence.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding vinyl-bg position-relative" id="about">
+  <div class="about-image" data-aos="fade-right">
+    <img src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=1800&auto=format&fit=crop" alt="Live music concert and performance training">
+  </div>
+
+  <div class="container position-relative">
+    <div class="row align-items-center g-5 justify-content-end">
+      
+      <div class="col-lg-6 py-lg-5" data-aos="fade-left">
+        <div class="eyebrow">About Institute</div>
+        <h2 class="section-title">A Place Where Creativity Comes Alive</h2>
+        <p class="text-light-emphasis mb-4 lh-lg">Tamanna Sangeet Vidyalaya provides structured music, dance and performance-based learning with focus on confidence, discipline, rhythm, expression and stage readiness.</p>
+        <div class="row g-4">
+          <div class="col-md-6"><div class="feature-box"><i class="bi bi-music-note-beamed"></i><h5>Expert Mentors</h5><p>Guided training for every level.</p></div></div>
+          <div class="col-md-6"><div class="feature-box"><i class="bi bi-stars"></i><h5>Stage Exposure</h5><p>Performance-focused learning.</p></div></div>
+          <div class="col-md-6"><div class="feature-box"><i class="bi bi-people"></i><h5>All Age Groups</h5><p>Kids, youth and adult batches.</p></div></div>
+          <div class="col-md-6"><div class="feature-box"><i class="bi bi-calendar2-week"></i><h5>Flexible Batches</h5><p>Easy timings for learners.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding stage-light-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="eyebrow justify-content-center">How It Works</div>
+      <h2 class="section-title">Your Learning Journey</h2>
+    </div>
+    <div class="row g-2 g-md-4">
+      <div class="col-6 col-md-3"><div class="journey-step" data-aos="fade-up"><div class="step-no">01</div><h5>Book Demo</h5><p class="text-light-emphasis">Start with a free demo class.</p></div></div>
+      <div class="col-6 col-md-3"><div class="journey-step" data-aos="fade-up" data-aos-delay="80"><div class="step-no">02</div><h5>Choose Course</h5><p class="text-light-emphasis">Select music, dance or fitness.</p></div></div>
+      <div class="col-6 col-md-3"><div class="journey-step" data-aos="fade-up" data-aos-delay="160"><div class="step-no">03</div><h5>Join Batch</h5><p class="text-light-emphasis">Get the right batch timing.</p></div></div>
+      <div class="col-6 col-md-3"><div class="journey-step" data-aos="fade-up" data-aos-delay="240"><div class="step-no">04</div><h5>Perform</h5><p class="text-light-emphasis">Build confidence on stage.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="parallax-band parallax-dance">
+  <div class="container">
+    <div class="parallax-content ms-lg-auto" data-aos="fade-up">
+      <div class="eyebrow">Move With Grace</div>
+      <h2 class="parallax-title">From classroom practice to stage-ready confidence.</h2>
+      <p class="parallax-text">Dance and performance training designed to make every learner expressive, confident and graceful.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding music-lines-bg" id="gallery">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="eyebrow justify-content-center">Gallery</div>
+      <h2 class="section-title">Performances & Class Moments</h2>
+    </div>
+    <div class="row g-4 mobile-scroll-row gallery-scroll-row">
+      <div class="col-sm-6 col-lg-3"><div class="gallery-img" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1200&auto=format&fit=crop" alt="Live music performance"></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="gallery-img" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=1200&auto=format&fit=crop" alt="Singer performing"></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="gallery-img" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop" alt="Concert crowd"></div></div>
+      <div class="col-sm-6 col-lg-3"><div class="gallery-img" data-aos="zoom-in"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1200&auto=format&fit=crop" alt="Dance class"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding py-lg-5 stage-light-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="eyebrow justify-content-center">Testimonials</div>
+      <h2 class="section-title">Loved by Students & Parents</h2>
+    </div>
+    <div class="row g-4 mobile-scroll-row testimonial-scroll-row">
+      <div class="col-md-4"><div class="testimonial-box" data-aos="fade-up"><i class="bi bi-quote"></i><p class="mt-3 text-light-emphasis">Amazing environment for learning music and dance. Teachers are supportive and classes are engaging.</p><h6 class="mt-4">Parent Review</h6></div></div>
+      <div class="col-md-4"><div class="testimonial-box" data-aos="fade-up" data-aos-delay="100"><i class="bi bi-quote"></i><p class="mt-3 text-light-emphasis">My child became more confident after joining vocal and dance classes. Very good institute.</p><h6 class="mt-4">Student Parent</h6></div></div>
+      <div class="col-md-4"><div class="testimonial-box" data-aos="fade-up" data-aos-delay="200"><i class="bi bi-quote"></i><p class="mt-3 text-light-emphasis">The practice style and personal attention helped me improve quickly.</p><h6 class="mt-4">Learner Review</h6></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding pt-lg-4" id="contact">
+  <div class="container">
+    <div class="cta-section">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="eyebrow">Free Demo Available</div>
+          <h2 class="section-title">Start Your Musical Journey Today</h2>
+          <p class="text-light-emphasis lh-lg">Book a free demo class and find the right music, dance or fitness program for you or your child.</p>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <form class="lead-form enquiry-form" novalidate>
+            <div class="mb-3">
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+              <div class="form-error">Please enter your name.</div>
+            </div>
+            <div class="mb-3">
+              <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+              <div class="form-error">Please enter a valid phone number.</div>
+            </div>
+            <div class="mb-3">
+              <input type="text" class="form-control" name="course" placeholder="Course Interest" required>
+              <div class="form-error">Please enter your course interest.</div>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control h-auto" name="message" rows="4" placeholder="Message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary-custom btn-premium-pulse w-100"><i class="bi bi-send-check me-2"></i>Submit Enquiry</button>
+            <div class="thank-you-message">
+              <i class="bi bi-check-circle"></i>
+              <h5>Thank You!</h5>
+              <p>Your enquiry has been submitted. Our team will contact you shortly.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding pt-0 pb-lg-5 vinyl-bg">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="eyebrow justify-content-center">FAQs</div>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div class="accordion mx-auto" style="max-width:900px" id="faqAccordion">
+      <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Do you offer beginner music classes?</button></h2><div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes, beginner-friendly music, singing, dance and fitness classes are available.</div></div></div>
+      <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Are classes available for kids and adults?</button></h2><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes, batches can be planned for kids, youth and adults depending on course and level.</div></div></div>
+      <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Is a demo class available?</button></h2><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Yes, users can submit the enquiry form to book a free demo class.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-4">
+        <img src="./logo.png" width="76" class="rounded-circle" alt="Tamanna Logo">
+        
+      </div>
+      <div class="col-lg-4">
+        <h5 class="mb-4">Quick Links</h5>
+        <div class="footer-links"><a href="#home">Home</a><a href="#courses">Courses</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div>
+      </div>
+      <div class="col-lg-4">
+        <h5 class="mb-4">Contact</h5>
+        <p class="text-light-emphasis mb-2"><i class="bi bi-telephone me-2"></i> 09654929196</p>
+        <p class="text-light-emphasis"><i class="bi bi-envelope me-2"></i> info@tamannasangeet.com</p>
+      </div>
+    </div>
+    <hr class="border-secondary mt-5">
+    <div class="text-center text-light-emphasis">© 2026 Tamanna Sangeet Vidyalaya. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<div class="modal fade enquiry-modal" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <div class="eyebrow mb-2">Free Demo Available</div>
+          <h5 class="modal-title" id="enquiryModalLabel">Book Your Demo Class</h5>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="lead-form enquiry-form js-popup-form" novalidate>
+          <div class="mb-3">
+            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+            <div class="form-error">Please enter your name.</div>
+          </div>
+          <div class="mb-3">
+            <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+            <div class="form-error">Please enter your phone number.</div>
+          </div>
+          <div class="mb-3">
+            <input type="text" class="form-control" name="course" placeholder="Course Interest" required>
+            <div class="form-error">Please enter your course interest.</div>
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control h-auto" name="message" rows="4" placeholder="Message"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary-custom btn-premium-pulse w-100"><i class="bi bi-send-check me-2"></i>Submit Enquiry</button>
+          <div class="thank-you-message">
+            <i class="bi bi-check-circle"></i>
+            <h5>Thank You!</h5>
+            <p>Your enquiry has been submitted. Our team will contact you shortly.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="floating-cta">
+  <a href="https://wa.me/919654929196" target="_blank" class="whatsapp-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+  <a href="tel:09654929196" class="call-btn" aria-label="Call"><i class="bi bi-telephone-fill"></i></a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({duration:900, once:true, offset:80});
+
+  document.querySelectorAll('.offcanvas .nav-link, .offcanvas .btn').forEach(function(link){
+    link.addEventListener('click', function(){
+      const menu = document.getElementById('mobileMenu');
+      const instance = bootstrap.Offcanvas.getInstance(menu);
+      if(instance) instance.hide();
+    });
+  });
+
+  document.querySelectorAll('.enquiry-form').forEach(function(form){
+    form.addEventListener('submit', function(event){
+      event.preventDefault();
+
+      let isValid = true;
+      const requiredFields = form.querySelectorAll('[required]');
+      const thankYou = form.querySelector('.thank-you-message');
+
+      requiredFields.forEach(function(field){
+        field.classList.remove('is-invalid');
+
+        if(!field.value.trim()){
+          field.classList.add('is-invalid');
+          isValid = false;
+        }
+      });
+
+      if(!isValid){
+        if(thankYou) thankYou.style.display = 'none';
+        return;
+      }
+
+      form.reset();
+      if(thankYou) thankYou.style.display = 'block';
+    });
+  });
+
+  const classSlider = document.querySelector('.class-slider');
+  const nextBtn = document.querySelector('.class-next');
+  const prevBtn = document.querySelector('.class-prev');
+
+  if(classSlider && nextBtn && prevBtn){
+    nextBtn.addEventListener('click', function(){
+      classSlider.scrollBy({ left: classSlider.clientWidth, behavior: 'smooth' });
+    });
+
+    prevBtn.addEventListener('click', function(){
+      classSlider.scrollBy({ left: -classSlider.clientWidth, behavior: 'smooth' });
+    });
+  }
+</script>
+
+</body>
+</html>
